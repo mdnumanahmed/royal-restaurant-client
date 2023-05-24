@@ -5,6 +5,7 @@ import ChefRecommend from "../ChefRecommend/ChefRecommend";
 import Featured from "../Featured/Featured";
 import HomeCTA from "../HomeCTA/HomeCTA";
 import PopularMenu from "../PopularMenu/PopularMenu";
+import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <HomeCTA />
             <ChefRecommend />
             <Featured />
+            <Testimonials />
         </div>
     );
 };

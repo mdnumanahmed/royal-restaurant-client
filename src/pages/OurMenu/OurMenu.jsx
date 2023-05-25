@@ -46,10 +46,10 @@ const OurMenu = () => {
           subTitle={
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. In dignissimos, ipsam odit odio pariatur reprehenderit laudantium nihil laborum consectetur debitis."
           }
-        />
+        />        
       </section>
 
-          {/* Pizzas */}
+      {/* Pizzas */}
       <section className="py-20">
         <MenuCategory
           items={pizza}
@@ -61,7 +61,7 @@ const OurMenu = () => {
         />
       </section>
 
-          {/* Salad */}
+      {/* Salad */}
       <section className="py-20">
         <MenuCategory
           items={salad}
@@ -73,7 +73,7 @@ const OurMenu = () => {
         />
       </section>
 
-          {/* Salad */}
+      {/* Salad */}
       <section className="py-20">
         <MenuCategory
           items={soup}

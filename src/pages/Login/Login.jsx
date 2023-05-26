@@ -5,12 +5,13 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(true);
   const captchaRef = useRef(null);
 
-  const {signIn} = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -21,22 +22,21 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    signIn(email, password)
-    .then(result => {
+    signIn(email, password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-    })
+    });
   };
 
   const handleVerifyCaptcha = () => {
     const user_captcha_value = captchaRef.current.value;
     if (validateCaptcha(user_captcha_value)) {
-      setDisabled(false)
-    }else{
-      setDisabled(true)
+      setDisabled(false);
+    } else {
+      setDisabled(true);
     }
   };
-  
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -103,6 +103,19 @@ const Login = () => {
                 />
               </div>
             </form>
+            <div>
+              <div className="flex flex-col w-full border-opacity-50">
+                <div className="grid h-10 card bg-base-100 rounded-box place-items-center">
+                  <p>
+                    New Here? <Link to="/register">Create An Account</Link>
+                  </p>
+                </div>
+                <div className="divider">OR</div>
+                <div className="grid h-10 card bg-base-100 rounded-box place-items-center">
+                  content
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

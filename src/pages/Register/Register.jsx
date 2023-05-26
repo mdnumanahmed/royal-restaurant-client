@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -20,7 +20,6 @@ const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
-  const captchaRef = useRef(null);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -47,8 +46,8 @@ const Register = () => {
     });
   };
 
-  const handleVerifyCaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleVerifyCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
     if (validateCaptcha(user_captcha_value)) {
       setDisabled(false);
     } else {
@@ -162,13 +161,10 @@ const Register = () => {
                 <input
                   type="text"
                   name="captcha"
-                  ref={captchaRef}
+                  onBlur={handleVerifyCaptcha}
                   placeholder="Type above text"
                   className="input input-bordered"
                 />
-                <button className="btn btn-xs" onClick={handleVerifyCaptcha}>
-                  Verify
-                </button>
               </div>
               <div className="form-control mt-6">
                 <input

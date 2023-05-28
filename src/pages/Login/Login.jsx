@@ -7,15 +7,16 @@ import {
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
 
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
-    const location = useLocation();
+  const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -30,14 +31,14 @@ const Login = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
       Swal.fire({
-        title: 'User Login Successful.',
+        title: "User Login Successful.",
         showClass: {
-            popup: 'animate__animated animate__fadeInDown'
+          popup: "animate__animated animate__fadeInDown",
         },
         hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-        }
-    });
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
       navigate(from, { replace: true });
     });
   };
@@ -52,7 +53,10 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <>
+      <Helmet>
+        <title>Bistro Boss | Login</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left w-1/2">
@@ -105,10 +109,11 @@ const Login = () => {
                 />
               </div>
 
+              {/* TODO: make submit button disabled for captcha */}
               <div className="form-control mt-6">
                 <input
                   type="submit"
-                  disabled={disabled}
+                  disabled={false}
                   className="btn btn-primary"
                   value="Login"
                 />
@@ -130,7 +135,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

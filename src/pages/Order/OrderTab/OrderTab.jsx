@@ -1,5 +1,7 @@
 import FoodCard from "../../Shared/FoodCard/FoodCard";
 
+// TODO: implement pagination here
+
 const OrderTab = ({items}) => {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 py-7">
